@@ -1,5 +1,5 @@
-"""Order utilities for 0x applications.
 
+"""Order utilities for 0x applications.
 Some methods require the caller to pass in a `Web3.BaseProvider`:code: object.
 For local testing one may construct such a provider pointing at an instance of
 `ganache-cli <https://www.npmjs.com/package/ganache-cli>`_ which has the 0x
@@ -380,9 +380,9 @@ def is_valid_signature(
     )
     try:
         return (
-            contract.call().isValidSignature(
+            contract.functions.isValidSignature(
                 data, to_checksum_address(signer_address), signature
-            ),
+            ).call(),
             "",
         )
     except web3.exceptions.BadFunctionCallOutput as exception:
